@@ -1,0 +1,10 @@
+applications:
+- path: .
+  memory: 256M
+  instances: 1
+  domain: mybluemix.net
+  name: project2RR
+  host: project2RR
+  disk_quota: 1024M
+  services:
+  - project2RR-cloudantNoSQLDB
