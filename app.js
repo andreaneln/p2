@@ -91,6 +91,9 @@ function initDBConnection() {
 initDBConnection();
 
 app.get('/', routes.index);
+app.get('/map', routes.map);
+app.get('/fares', routes.fares);
+app.get('/program', routes.program);
 
 function createResponseData(id, name, value, attachments) {
 
