@@ -438,37 +438,36 @@ app.get('/api/plans', function(request, response) {
 
         var planList = [];
         var i = 0;
- //       dblist function(err, body) {
-   //         if (!err) {
-   //             var len = body.rows.length;
-   //            console.log('total # of plans -> ' + len);
-// +                    if (len == 0) {
-// +                       // push sample data
-// +                       // save doc
-// +                        var docName = 'simple_doc';
-// +                        var docDesc = 'A simple Document';
-// +                        db2.insert({
-// +                            name: docName,
-// +                            value: 'A sample Document'
-// +                        }, '', function(err, doc) {
-// +                            if (err) {
-// +                                console.log(err);
-// +                            } else {
-// +        
-// +                                console.log('Document : ' + JSON.stringify(doc));
-// +                                var responseData = createResponseData(
-// +                                    doc.id,
-// +                                    docName,
-// +                                    docDesc, []);
-// +                                carList.push(responseData);
-// +                                response.write(JSON.stringify(carList));
-// +                                console.log(JSON.stringify(carList));
-// +                                console.log('ending response...');
-// +                                response.end();
-// +                            }
-// +                        });
-//               }
-//                 else {
+      db.list(function(err, body) {
+       if (!err) {
+             var len = body.rows.length;
+               console.log('total # of plans -> ' + len);
+                   if (len == 0) {
+                       // push sample data
+                       // save doc
+                        var docName = 'simple_doc';
+                        var docDesc = 'A simple Document';
+                        db2.insert({
+                            name: docName,
+                            value: 'A sample Document'
+                        }, '', function(err, doc) {
+                           if (err) {
+                                console.log(err);
+                            } else {
+                                       console.log('Document : ' + JSON.stringify(doc));
+                                    var responseData = createResponseData(
+                                    doc.id,
+                                    docName,
+                                   docDesc, []);
+                                planList.push(responseData);
+                                response.write(JSON.stringify(planList));
+                                console.log(JSON.stringify(planList));
+                                console.log('ending response...');
+                                response.end();
+                            }
+                        });
+               }
+                 else {
     
                     body.rows.forEach(function(document) {
     
@@ -490,6 +489,12 @@ app.get('/api/plans', function(request, response) {
                             console.log(err);
                             }
                         };
+                    });
+
+                }
+            } else {
+                console.log(err);
+            }
 
         });
     
