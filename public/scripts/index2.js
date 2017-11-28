@@ -9,12 +9,7 @@ function encodeUriAndQuotes(untrustedStr) {
 }
     
 function loadItems() {
-    xhrGet(REST_DATA, function(data) {
-
-        //stop showing loading message
-        stopLoadingMessage();
-        console.log(data);
-        
+    xhrGet(REST_DATA, function(data) {        
         var receivedItems = data || [];
         var items = [];
         var i;
@@ -29,25 +24,12 @@ function loadItems() {
         if (!hasItems) {
             items = defaultItems;
         }
-        for (i = 0; i < items.length; ++i) {
-            addItem(items[i]);
-        }
+        
 
     }, function(err) {
         console.error(err);
     });
 }
 
-
-function showLoadingMessage() {
-    console.log("loading");
-    document.getElementById('loadingImage').innerHTML = "Loading data " + "<img height=\"100\" width=\"100\" src=\"images/loading.gif\"></img>";
-}
-
-function stopLoadingMessage() {
-    document.getElementById('loadingImage').innerHTML = "";
-}
-
-showLoadingMessage();
 //updateServiceInfo();
 loadItems();
