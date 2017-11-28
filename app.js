@@ -484,7 +484,7 @@ app.get('/api/plans', function(request, response) {
                         if (!err) {
                                 var responseData = createResponseData(
                                         doc._id,
-                                       doc.name,
+                                        doc.name,
                                         doc.value, []);
                                 planList.push(responseData);
                                 i++;
