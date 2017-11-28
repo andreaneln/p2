@@ -432,7 +432,77 @@ app.get('/api/favorites', function(request, response) {
 
 });
 
+app.get('/api/plans', function(request, response) {
+    
+        console.log("get plans");
+
+        var planList = [];
+        var i = 0;
+        db2.list(function(err, body) {
+            if (!err) {
+                var len = body.rows.length;
+               console.log('total # of plans -> ' + len);
+// +                    if (len == 0) {
+// +                       // push sample data
+// +                       // save doc
+// +                        var docName = 'simple_doc';
+// +                        var docDesc = 'A simple Document';
+// +                        db2.insert({
+// +                            name: docName,
+// +                            value: 'A sample Document'
+// +                        }, '', function(err, doc) {
+// +                            if (err) {
+// +                                console.log(err);
+// +                            } else {
+// +        
+// +                                console.log('Document : ' + JSON.stringify(doc));
+// +                                var responseData = createResponseData(
+// +                                    doc.id,
+// +                                    docName,
+// +                                    docDesc, []);
+// +                                carList.push(responseData);
+// +                                response.write(JSON.stringify(carList));
+// +                                console.log(JSON.stringify(carList));
+// +                                console.log('ending response...');
+// +                                response.end();
+// +                            }
+// +                        });
+                } else {
+    
+                    body.rows.forEach(function(document) {
+    
+                            revs_info: true
+                        }, function(err, doc) {
+                        if (!err) {
+                                var responseData = createResponseData(
+                                        doc._id,
+                                       doc.name,
+                                        doc.value, []);
+                                planList.push(responseData);
+                                i++;
+                                if (i >= len) {
+                                    response.write(JSON.stringify(carList));
+                                    console.log('ending response...');
+                                    response.end();
+                                }
+                            } else {
+                            console.log(err);
+                            }
+                        });
+    
+                    });
+                }
+    
+        } else {
+               console.log(err);
+            }
+        });
+    
+    });
 
 http.createServer(app).listen(app.get('port'), '0.0.0.0', function() {
     console.log('Express server listening on port ' + app.get('port'));
 });
+
+
+           
