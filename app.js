@@ -12,6 +12,7 @@ var express = require('express'),
 var app = express();
 
 var db;
+var db2;
 
 var cloudant;
 
@@ -19,6 +20,9 @@ var fileToUpload;
 
 var dbCredentials = {
     dbName: 'my_sample_db'
+};
+var dbCredentials2 = {
+    dbName: 'plans'
 };
 
 var bodyParser = require('body-parser');
@@ -85,11 +89,14 @@ function initDBConnection() {
         }
     });
 
+    console.log("db:"+db);
+    console.log(db2);
+
     db = cloudant.use(dbCredentials.dbName);
+    db2 = cloudant.use(dbCredentials2.dbName)
 }
 
 initDBConnection();
-
 app.get('/', routes.index);
 app.get('/map', routes.map);
 app.get('/fares', routes.fares);
@@ -438,7 +445,7 @@ app.get('/api/plans', function(request, response) {
 
         var planList = [];
         var i = 0;
-      db.list(function(err, body) {
+      db2.list(function(err, body) {
        if (!err) {
              var len = body.rows.length;
                console.log('total # of plans -> ' + len);
@@ -471,8 +478,9 @@ app.get('/api/plans', function(request, response) {
     
                     body.rows.forEach(function(document) {
     
+                        db2.get(document.id,{
                             revs_info: true,
-                         function(err, doc) {
+                        }, function(err, doc) {
                         if (!err) {
                                 var responseData = createResponseData(
                                         doc._id,
@@ -486,16 +494,16 @@ app.get('/api/plans', function(request, response) {
                                     response.end();
                                 }
                             } else {
-                            console.log(err);
+                                console.log(err);
                             }
-                        };
+                        });
+    
                     });
-
                 }
+    
             } else {
                 console.log(err);
             }
-
         });
     
     });
