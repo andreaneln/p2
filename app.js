@@ -438,10 +438,10 @@ app.get('/api/plans', function(request, response) {
 
         var planList = [];
         var i = 0;
-        db2.list(function(err, body) {
-            if (!err) {
-                var len = body.rows.length;
-               console.log('total # of plans -> ' + len);
+ //       dblist function(err, body) {
+   //         if (!err) {
+   //             var len = body.rows.length;
+   //            console.log('total # of plans -> ' + len);
 // +                    if (len == 0) {
 // +                       // push sample data
 // +                       // save doc
@@ -467,12 +467,13 @@ app.get('/api/plans', function(request, response) {
 // +                                response.end();
 // +                            }
 // +                        });
-                } else {
+//               }
+//                 else {
     
                     body.rows.forEach(function(document) {
     
-                            revs_info: true
-                        }, function(err, doc) {
+                            revs_info: true,
+                         function(err, doc) {
                         if (!err) {
                                 var responseData = createResponseData(
                                         doc._id,
@@ -481,21 +482,15 @@ app.get('/api/plans', function(request, response) {
                                 planList.push(responseData);
                                 i++;
                                 if (i >= len) {
-                                    response.write(JSON.stringify(carList));
+                                    response.write(JSON.stringify(planList));
                                     console.log('ending response...');
                                     response.end();
                                 }
                             } else {
                             console.log(err);
                             }
-                        });
-    
-                    });
-                }
-    
-        } else {
-               console.log(err);
-            }
+                        };
+
         });
     
     });
