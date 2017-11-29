@@ -8,6 +8,7 @@ function encodeUriAndQuotes(untrustedStr) {
     return encodeURI(String(untrustedStr)).replace(/'/g, '%27').replace(')', '%29');
 }
 
+
 function addItem(item) {
     
         var row = document.createElement('tr');
@@ -43,7 +44,9 @@ function loadItems() {
         if (!hasItems) {
             items = defaultItems;
         }
-        
+        for (i = 0; i < items.length; ++i) {
+            addItem(items[i]);
+        }
 
     }, function(err) {
         console.error(err);
@@ -51,5 +54,5 @@ function loadItems() {
 }
 
 //updateServiceInfo();
-addItem(item);
+
 loadItems();
