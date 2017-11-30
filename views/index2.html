@@ -38,7 +38,7 @@
   </style>
 </head>
 <body>
-
+<!-- Nav Bar -->
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -105,48 +105,28 @@
   <!-- ChatBot Code -->
   <div id="live-chat">
     
-     <header class="clearfix">
-       
-       <a href="#" class="chat-close">x</a>
- 
-       <h4>Live Chat - How Can We Help?</h4>
- 
-       <span class="chat-message-counter">1</span>
- 
-     </header>
- 
-     <div class="chat">
-       
-       <div class="chat-history">
+        <header class="clearfix">
+          
+          <a href="#" class="chat-close">x</a>
+    
+          <h4>Live Chat - How Can We Help?</h4>
+    
+          <span class="chat-message-counter">1</span>
+    
+        </header>
+        
+        <div id="output"></div>
          
-         <div class="chat-message clearfix">
- 
-           <div class="chat-message-content clearfix">
- 
-             <h5></h5>
- 
-             <p>Would you like to run 2km, 5km or 10km?</p>
- 
-           </div> <!-- end chat-message-content -->
- 
-         </div> <!-- end chat-message -->
- 
- 
-       <form action="#" method="post">
- 
-         <fieldset>
-           
-           <input type="text" placeholder="Type your message…" autofocus>
-           <input type="hidden">
- 
-         </fieldset>
- 
-       </form>
- 
+   <div id="container">
+       <input type="text" id="input" value="">
+   </div>
+   
+   <!-- jquery for enter key press -->      
+  <script src="https://code.jquery.com/jquery-3.0.0.js" integrity="sha256-jrPLZ+8vDxt2FnE1zvZXCkCcebI/C8Dt5xyaQBjxQIo=" crossorigin="anonymous"></script>
+      
      </div>
-    </div>
-  </div><!-- end chat -->
   <!-- End chat code --> 
+  
 <!--<div class="container text-center">    
   <h3>What We Do</h3><br>
   <div class="row">

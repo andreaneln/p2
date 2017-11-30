@@ -8,7 +8,7 @@ function encodeUriAndQuotes(untrustedStr) {
     return encodeURI(String(untrustedStr)).replace(/'/g, '%27').replace(')', '%29');
 }
 
-
+// adding an item to the table displaying data from dB
 function addItem(item) {
     
         var row = document.createElement('tr');
@@ -53,6 +53,6 @@ function loadItems() {
     });
 }
 
-//updateServiceInfo();
+//call the loadItems function
 
 loadItems();
