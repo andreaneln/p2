@@ -438,7 +438,7 @@ app.get('/api/favorites', function(request, response) {
     });
 
 });
-
+// Linking the DataBase
 app.get('/api/plans', function(request, response) {
     
         console.log("get plans");

@@ -20,7 +20,7 @@ function addItem(item) {
     
 
         row.innerHTML = "<td>"+item.value+"</td>";
-    
+    // Likely could have defined more variables to display more characteristics of the plans
         var table = document.getElementById('plans');
         table.lastChild.appendChild(row);
     }
