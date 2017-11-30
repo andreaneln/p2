@@ -19,7 +19,7 @@
     //adding code - asking a question 
 
     var questionNum = 0;													// keep count of question, used for IF condition.
-    var question = "Would you like to run 2km, 5km or 10km?";				  // first question
+    var question = "<h1>Would you like to run 2km, 5km or 10km?<h1>";				  // first question
     
     var output = document.getElementById('output');				// store id="output" in output variable
     output.innerHTML = question;													// ouput first question
