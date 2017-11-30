@@ -31,7 +31,7 @@
         if (questionNum == 0) {
         output.innerHTML = '<h1> Good choice for the ' + input + '</h1>';// output response
         document.getElementById("input").value = "";  			 		// clear text box
-        question = '<h1>Are you training for a marathon?</h1>';			 // load next question		
+        question = '<h1>Need some guidance?</h1>';			 // load next question		
         setTimeout(timedQuestion, 2000);												// output next question after 2sec delay
         }
                 if (input== "yes" || input == "no") {
